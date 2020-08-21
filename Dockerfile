@@ -15,14 +15,10 @@ ARG GIT_REPO
 ARG GIT_BRANCH
 ARG KEYCLOAK_DIST=https://downloads.jboss.org/keycloak/$KEYCLOAK_VERSION/keycloak-$KEYCLOAK_VERSION.tar.gz
 
-USER root
-
 RUN apt-get update -y && apt-get install -y libc6 gzip hostname openssl tar
 
 ADD tools /opt/jboss/tools
 RUN /opt/jboss/tools/build-keycloak.sh
-
-USER 1000
 
 EXPOSE 8080
 EXPOSE 8443
